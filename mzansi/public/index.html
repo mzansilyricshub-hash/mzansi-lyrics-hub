@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#07080d">
+<meta name="description" content="MzansiLyrics Hub — Mzansi music news, alerts, lyrics and paid promo. TikTok @official.mzansi_lyrics">
+<title>MzansiLyrics Hub</title>
+<link rel="icon" href="profile.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07080d;--glass:rgba(255,255,255,.055);--line:rgba(255,255,255,.12);--tx:#f5f6fa;--mut:#9aa0b4;--g:#00c46a;--y:#ffc233;--r:#ff4d3d;--b:#3b7bff;--grad:linear-gradient(135deg,#00c46a,#ffc233 55%,#ff4d3d)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:Outfit,system-ui,Segoe UI,sans-serif;line-height:1.55;min-height:100vh;overflow-x:hidden}
+a{color:var(--y)}
+.orbs{position:fixed;inset:0;z-index:-1;overflow:hidden}
+.orbs i{position:absolute;border-radius:50%;filter:blur(90px);opacity:.4;animation:float 18s ease-in-out infinite}
+.orbs i:nth-child(1){width:420px;height:420px;background:var(--g);top:-120px;left:-100px}
+.orbs i:nth-child(2){width:380px;height:380px;background:var(--r);top:40%;right:-140px;animation-delay:-6s;opacity:.28}
+.orbs i:nth-child(3){width:360px;height:360px;background:var(--b);bottom:-120px;left:20%;animation-delay:-11s;opacity:.25}
+@keyframes float{50%{transform:translate(40px,-50px) scale(1.15)}}
+@keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes shine{to{background-position:200% center}}
+@keyframes pulse{50%{box-shadow:0 0 0 10px rgba(255,194,51,0)}}
+@keyframes eq{0%,100%{transform:scaleY(.15)}50%{transform:scaleY(1)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.wrap{max-width:840px;margin:0 auto;padding:0 16px calc(40px + env(safe-area-inset-bottom))}
+/* hero: amapiano sunset */
+.hero{position:relative;margin:0 -16px;padding:calc(36px + env(safe-area-inset-top)) 16px 120px;text-align:center;overflow:hidden;background:linear-gradient(180deg,#14072b 0%,#5a1b5e 38%,#d6422f 72%,#ffb24a 100%);border-radius:0 0 34px 34px;animation:up .8s both}
+.hero::before{content:"";position:absolute;inset:0;background:url(hero.jpg) center/cover;opacity:.5}
+.sun{position:absolute;left:50%;bottom:70px;width:210px;height:210px;margin-left:-105px;border-radius:50%;background:radial-gradient(circle,#fff3b0,#ffc233 55%,#ff7a2f);box-shadow:0 0 90px 30px rgba(255,160,60,.55);opacity:.9}
+.vinyl{position:absolute;right:-60px;top:20px;width:200px;height:200px;border-radius:50%;background:repeating-radial-gradient(circle,#111 0 3px,#222 3px 5px);opacity:.35;animation:spin 9s linear infinite}
+.vinyl::after{content:"";position:absolute;inset:38%;border-radius:50%;background:var(--grad)}
+#sky{position:absolute;left:0;bottom:0;width:100%;height:150px}
+#sky *{fill:#07080d}
+.bars{position:absolute;left:0;right:0;bottom:0;height:100px;display:flex;align-items:flex-end;gap:3px;padding:0 4px;opacity:.55}
+.bars i{flex:1;height:100%;transform-origin:bottom;background:linear-gradient(#ffc233,#ff4d3d);border-radius:3px 3px 0 0;animation:eq var(--d) ease-in-out infinite;animation-delay:var(--l)}
+.hero>*:not(.sun):not(.vinyl):not(#sky):not(.bars){position:relative;z-index:2}
+.av{width:104px;height:104px;margin:0 auto 12px;border-radius:50%;padding:4px;background:var(--grad);box-shadow:0 12px 40px rgba(0,0,0,.5)}
+.av img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block;border:3px solid #07080d}
+.hero h1{margin:0;font-size:clamp(2.2rem,8vw,3.6rem);font-weight:800;letter-spacing:-1.5px;line-height:1.05;text-shadow:0 4px 30px rgba(0,0,0,.4)}
+.hero h1 span{background:linear-gradient(90deg,#fff,#ffe08a,#fff);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 5s linear infinite}
+.handle{font-weight:600;opacity:.95;margin-top:2px}
+.verse{font-family:'Playfair Display',Georgia,serif;font-style:italic;margin:10px 0 2px;font-size:1.05rem}
+.chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+.chips a{background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.25);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:7px 14px;border-radius:30px;font-size:.82rem;color:#fff;text-decoration:none}
+/* nav */
+nav{position:sticky;top:10px;z-index:20;display:flex;gap:4px;padding:5px;margin:18px auto 22px;max-width:100%;overflow-x:auto;scrollbar-width:none;width:max-content;background:rgba(14,15,24,.75);border:1px solid var(--line);border-radius:40px;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 10px 40px rgba(0,0,0,.5)}
+nav::-webkit-scrollbar{display:none}
+nav button{flex:none;border:0;background:transparent;color:var(--mut);padding:10px 15px;border-radius:30px;font:600 .88rem Outfit,sans-serif;cursor:pointer;transition:.25s;white-space:nowrap}
+nav button:hover{color:var(--tx)}nav button.on{background:var(--grad);color:#08090e;box-shadow:0 4px 18px rgba(255,194,51,.35)}
+h2{font-size:1.7rem;margin:0 0 4px;font-weight:700}
+.sub{color:var(--mut);margin:0 0 18px}
+.card{position:relative;background:var(--glass);border:1px solid var(--line);border-radius:20px;padding:18px 20px;margin-bottom:14px;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);animation:up .5s both;transition:transform .25s,border-color .25s,box-shadow .25s;overflow:hidden}
+.card:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.28);box-shadow:0 14px 40px rgba(0,0,0,.45)}
+.card.acc::before,.card.alert::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--grad)}
+.card.alert::before{background:var(--r)}.card.alert{box-shadow:inset 0 0 60px rgba(255,77,61,.07)}
+.card h3{margin:0 0 4px;font-size:1.15rem;font-weight:700}
+.tag{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 9px;border-radius:20px;background:rgba(0,196,106,.16);color:var(--g);margin-bottom:6px}
+.tag.r{background:rgba(255,77,61,.16);color:var(--r)}.tag.y{background:rgba(255,194,51,.16);color:var(--y)}
+.meta{color:var(--mut);font-size:.8rem}
+.body{white-space:pre-wrap;margin-top:8px;color:#dfe2ee}
+.lyr{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:1.08rem;line-height:1.9;text-align:center;padding:10px 0}
+.empty{text-align:center;color:var(--mut);padding:40px 10px;border:1px dashed var(--line);border-radius:20px;margin-bottom:14px}.empty b{display:block;font-size:2.4rem}
+.pk{display:flex;justify-content:space-between;align-items:center;gap:14px}
+.pk.hot{border-color:rgba(255,194,51,.6);background:linear-gradient(135deg,rgba(255,194,51,.12),rgba(255,255,255,.04))}
+.pk ul{margin:6px 0 0;padding-left:18px;color:#cfd3e2;font-size:.85rem}
+.ribbon{position:absolute;top:12px;right:-34px;background:var(--grad);color:#000;font-size:.65rem;font-weight:800;padding:3px 40px;transform:rotate(35deg);letter-spacing:1px}
+.amt{font-size:1.9rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1}
+.btn{display:inline-block;border:0;cursor:pointer;font:700 .95rem Outfit,sans-serif;padding:11px 20px;border-radius:14px;color:#07080d;background:var(--grad);transition:.2s;margin:4px 4px 4px 0;text-decoration:none}
+.btn:hover{transform:translateY(-2px) scale(1.03);box-shadow:0 8px 24px rgba(255,194,51,.35)}
+.btn.g{background:var(--glass);color:var(--tx);border:1px solid var(--line)}.btn.r{background:var(--r);color:#fff}.btn.w{background:#25d366;color:#04210f}
+.code{font:800 clamp(1.3rem,6vw,2rem)/1.2 ui-monospace,Consolas,monospace;letter-spacing:3px;text-align:center;color:var(--y);background:rgba(0,0,0,.55);border:2px solid var(--y);border-radius:18px;padding:22px 10px;margin:16px 0;animation:pulse 2s infinite;user-select:all;word-break:break-all;text-shadow:0 0 20px rgba(255,194,51,.6)}
+.steps{counter-reset:s;padding:0;list-style:none;margin:14px 0}
+.steps li{counter-increment:s;padding:8px 0 8px 44px;position:relative}
+.steps li::before{content:counter(s);position:absolute;left:0;top:6px;width:30px;height:30px;border-radius:50%;background:var(--grad);color:#000;font-weight:800;display:grid;place-items:center}
+.bank .row{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)}.bank .row b{text-align:right}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.mini{text-align:center}.mini .e{font-size:1.8rem}
+.prof{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.prof img{width:110px;height:110px;border-radius:50%;object-fit:cover;border:3px solid var(--y)}
+.stats{display:flex;gap:20px;margin:8px 0}.stats b{display:block;font-size:1.2rem}
+details{border-bottom:1px solid var(--line);padding:10px 0}summary{cursor:pointer;font-weight:700}details p,details li{color:#cfd3e2;font-size:.92rem}details ul{padding-left:20px}
+input,textarea,select{width:100%;background:rgba(0,0,0,.4);color:var(--tx);border:1px solid var(--line);border-radius:14px;padding:13px 15px;margin:6px 0;font:inherit;outline:0;transition:.2s}
+input:focus,textarea:focus,select:focus{border-color:var(--g);box-shadow:0 0 0 3px rgba(0,196,106,.2)}
+select option{background:#14151f}
+.ok{color:var(--g)}.bad{color:var(--r)}.warn{color:var(--y)}
+.res{border-radius:14px;padding:14px;margin-top:10px;font-weight:600}.res.ok{background:rgba(0,196,106,.12)}.res.bad{background:rgba(255,77,61,.12)}.res.warn{background:rgba(255,194,51,.12)}
+.row2{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid var(--line)}
+.tk{padding:12px 0;border-bottom:1px solid var(--line)}.tk.answered{opacity:.55}
+table{width:100%;border-collapse:collapse;font-size:.82rem}td,th{padding:8px 6px;border-bottom:1px solid var(--line);text-align:left}th{color:var(--mut);font-weight:600}
+.mod{position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);display:none;place-items:center;z-index:50;padding:16px}.mod.on{display:grid}.mod .card{width:100%;max-width:400px;margin:0}
+.wa{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:30;width:56px;height:56px;border-radius:50%;background:#25d366;display:grid;place-items:center;font-size:28px;text-decoration:none;box-shadow:0 8px 28px rgba(37,211,102,.5)}
+footer{text-align:center;color:var(--mut);font-size:.82rem;padding:30px 0 10px}footer a{color:var(--mut)}
+.ticker{overflow:hidden;white-space:nowrap;margin:16px 0 0;padding:9px 0;border-radius:14px;background:rgba(255,77,61,.12);border:1px solid rgba(255,77,61,.3);font-size:.85rem;font-weight:600}
+.tkr{display:inline-block;padding-left:100%;animation:mq 70s linear infinite}
+@keyframes mq{to{transform:translateX(-100%)}}
+.fl{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 16px}
+.chip{border:1px solid var(--line);background:var(--glass);color:var(--mut);padding:7px 14px;border-radius:30px;font:600 .8rem Outfit,sans-serif;cursor:pointer}
+.chip.on{background:var(--grad);color:#08090e;border-color:transparent}
+.btn.sh{font-size:.8rem;padding:7px 14px;margin-top:10px}
+.chk{display:flex;align-items:center;gap:8px;margin:8px 0;color:#cfd3e2;font-size:.9rem}.chk input{width:auto;margin:0}
+.trust .mini{padding:12px}.trust .e{font-size:1.5rem}
+.ul{padding-left:20px;color:#cfd3e2;font-size:.92rem}
+</style>
+</head>
+<body>
+<div class="orbs"><i></i><i></i><i></i></div>
+<div class="wrap">
+ <section class="hero">
+  <div class="sun"></div><div class="vinyl"></div>
+  <div class="bars" id="bars"></div>
+  <svg id="sky" viewBox="0 0 1000 200" preserveAspectRatio="none"></svg>
+  <div class="av"><img src="profile.jpg" alt="MzansiLyrics_Hub"></div>
+  <h1>Mzansi<span>Lyrics</span> Hub</h1>
+  <div class="handle">@official.mzansi_lyrics</div>
+  <div class="verse">"I am not ashamed of the gospel" — Romans 1:16</div>
+  <div class="chips"><a href="https://www.tiktok.com/@official.mzansi_lyrics" target="_blank" rel="noopener">🎬 Follow on TikTok</a><a href="#" onclick="go('promo');return false">🚀 Promote with us</a><a href="#" onclick="go('source');return false">🗞️ Be our news source</a><a href="#" onclick="go('join');return false">🤝 Join the team</a></div>
+ </section>
+ <div class="ticker"><div class="tkr" id="tkr"></div></div>
+ <nav id="nav"></nav>
+ <main id="main"></main>
+ <footer>© 2026 MzansiLyrics_Hub · Made with ❤️ in Mzansi 🇿🇦<br><a href="#" onclick="go('privacy');return false">Privacy &amp; Terms</a> · <a href="#" onclick="go('support');return false">Support</a> · <a href="#" onclick="go('source');return false">News source</a> · <a href="#" id="adm">Admin</a></footer>
+</div>
+<a class="wa" id="wa" target="_blank" rel="noopener" title="WhatsApp us">💬</a>
+<div class="mod" id="mod"><div class="card"><h3>Almost there 🎉</h3><p class="meta" id="mpk"></p><input id="mn" placeholder="Your name / artist name"><button class="btn" onclick="confirmBuy()">Get my private code</button><button class="btn g" onclick="$('#mod').classList.remove('on')">Cancel</button></div></div>
+
+<script>
+/* ===== EDIT THESE ===== */
+const EMAIL="mzansilyricshub@gmail.com";
+const WA_NUM="27603203200", WA_SHOW="060 320 3200";
+const TIKTOK="@official.mzansi_lyrics", TIKTOK_URL="https://www.tiktok.com/@official.mzansi_lyrics";
+const BANK={bank:"Nedbank",acc:"1330552091",holder:"Mr Sbongimpilo Makgwale",branch:"198765 (Nedbank universal)"};
+const STATS={followers:"8,715",likes:"294.1K",following:"3"};
+const PACKAGES=[
+ {name:"Story Shoutout",price:"R50",icon:"📣",desc:"A quick shoutout to our followers.",inc:["1 TikTok story shoutout","Live for 24 hours"]},
+ {name:"Single Post Promo",price:"R150",icon:"🎬",desc:"Your song, video or brand on our page.",inc:["1 promo video posted on the page","Your link in the caption","Posted within 48h of verification"]},
+ {name:"Lyrics Feature",price:"R250",icon:"🎤",desc:"We turn your song into a lyrics video.",inc:["Lyrics video of your song","Posted + shared on story","Credit to you and your link"],hot:true},
+ {name:"Pinned Spotlight",price:"R400",icon:"📌",desc:"Stay at the top of our page for 7 days.",inc:["Your post pinned for 7 days","1 story shoutout","Best for new releases"]},
+ {name:"Weekly Package",price:"R600",icon:"🔥",desc:"A full week of promotion.",inc:["3 promo posts","1 lyrics feature","3 story shoutouts"]},
+ {name:"Monthly Partner",price:"R1500",icon:"👑",desc:"Be our official partner for the month.",inc:["8 posts + 2 lyrics features","Pinned post for 14 days","Priority scheduling & WhatsApp support"]}
+];
+const ACCT=[
+ {name:"Account Shoutout",price:"R100",icon:"📢",desc:"Introduce your TikTok, Instagram or YouTube account to our audience.",inc:["1 shoutout post with your @handle","1 story mention","Your link in the caption"]},
+ {name:"Follow Feature",price:"R200",icon:"➕",desc:"A feature video built to bring real followers to your page.",inc:["Dedicated feature video","Pinned for 3 days","2 story shoutouts"],hot:true},
+ {name:"Artist Spotlight",price:"R350",icon:"🌟",desc:"Your story, bio and music on our page and this website.",inc:["Spotlight video + short bio","Featured on this website for 7 days","Links to your socials and music"]},
+ {name:"Growth Bundle",price:"R750",icon:"📈",desc:"A full week-long push for your account.",inc:["3 account shoutouts","1 Follow Feature","1 Artist Spotlight mention","Weekly recap shoutout"]},
+ {name:"Monthly Account Partner",price:"R1800",icon:"🏆",desc:"We back your account for a whole month.",inc:["10 shoutouts across the month","2 Follow Features + 1 Spotlight","Priority WhatsApp support"]}
+];
+const EVENTS=[
+ {when:"17 Oct 2026",title:"Ne-Yo live in Cape Town",where:"GrandWest Grand Arena, Cape Town",note:"R&B star Ne-Yo performs in South Africa this week, with a second show in Pretoria on 18 October at SunBet Arena.",src:"Briefly News",url:"https://briefly.co.za/people/254882-october-calendar-sorted-major-concerts-festivals-happening-south-africa/"},
+ {when:"26–31 Oct 2026",title:"Gender@Work music industry training",where:"Johannesburg",note:"The Music In Africa Foundation has an open call for aspiring female technical event production professionals to apply for this programme.",src:"Music In Africa",url:"https://musicinafrica.net/"},
+ {when:"31 Oct 2026",title:"Tbo Touch Replenishment Concert (5th edition)",where:"Sandown High School, Sandton",note:"Radio personality Tbo Touch brings his annual concert to Johannesburg for the first time.",src:"Briefly News",url:"https://briefly.co.za/people/254882-october-calendar-sorted-major-concerts-festivals-happening-south-africa/"},
+ {when:"29 Nov 2026",title:"Mayonie Open Air 2026",where:"Johannesburg",note:"A celebration of African electronic music with Themba, Zakes Bantwini and other top South African dance artists.",src:"SA Music Mag",url:"https://samusicmag.co.za/"}
+];
+const SEED={
+ news:[
+  {cat:"Hip-Hop",title:"Back To The City turns 20 and Cassper promises more music",body:"Cassper Nyovest says the crowd's reception at Back To The City has him vowing to deliver more music, while the festival's 20-year milestone is being celebrated across the scene.",when:"9–12 Oct 2026",src:"SA Hip Hop Mag",url:"https://sahiphopmag.co.za/"},
+  {cat:"Hip-Hop",title:"Usimamane and Blxckie squash beef with “Press”",body:"The two rappers have settled their differences and dropped a new single called “Press”.",when:"9 Oct 2026",src:"SA Hip Hop Mag",url:"https://sahiphopmag.co.za/"},
+  {cat:"Industry",title:"K.O. on the financial reality behind sold-out shows",body:"K.O. has opened up about the money pressures artists face even when their shows sell out, a conversation many independent artists will relate to.",when:"9 Oct 2026",src:"SA Hip Hop Mag",url:"https://sahiphopmag.co.za/"},
+  {cat:"Amapiano & House",title:"Shimza makes his DJ Mag Top 100 debut",body:"South African DJ and producer Shimza has entered the DJ Mag Top 100 for the first time, a sign of the continued global rise of South African Afro-tech.",when:"Oct 2026",src:"SA Music Mag",url:"https://samusicmag.co.za/"},
+  {cat:"New Music",title:"Moonchild Sanelly releases “Ngenzenjani” ahead of The Blueprint",body:"Moonchild Sanelly has dropped her new single “Ngenzenjani”, opening a new chapter ahead of her upcoming album The Blueprint.",when:"Oct 2026",src:"SA Music Mag",url:"https://samusicmag.co.za/"},
+  {cat:"New Music",title:"Pilani Bubu releases “Caged Heart”",body:"After 15 years of writing her own playbook, award-winning musician Pilani Bubu releases the introspective single “Caged Heart” and reflects on creative independence.",when:"9 Oct 2026",src:"Mail & Guardian",url:"https://mg.co.za/tags/music/"},
+  {cat:"Events",title:"Mayonie Open Air returns on 29 November",body:"Themba, Zakes Bantwini and more of South Africa's top dance music artists are set to light up Johannesburg at this celebration of African electronic music.",when:"Oct 2026",src:"SA Music Mag",url:"https://samusicmag.co.za/"},
+  {cat:"Industry",title:"2026 Music Exchange to focus on rights, AI and the entertainment economy",body:"This year's Music Exchange will look at music rights, AI and the entertainment economy, while CAPASSO has backed global principles for fair generative AI music licensing.",when:"6 Oct 2026",src:"Music In Africa",url:"https://musicinafrica.net/"},
+  {cat:"Industry",title:"Open call: Gender@Work training for women in event production",body:"The Music In Africa Foundation invites aspiring female technical event production professionals to apply for the 2026 programme, running 26 to 31 October in Johannesburg.",when:"9 Oct 2026",src:"Music In Africa",url:"https://musicinafrica.net/"}
+ ],
+ alerts:[
+  {title:"Scam alert: only pay our official account",body:"We only accept promo payments into the Nedbank account on our Promo page, and we always confirm with your private code. We will NEVER ask for your card PIN, OTP or passwords. If in doubt, WhatsApp "+WA_SHOW+" or email "+EMAIL+"."},
+  {title:"Keep your private code private",body:"Each code works once. Send it to us only by email, WhatsApp or private TikTok DM, never in a public comment."},
+  {title:"Got a story? Become our news source",body:"See something happening in your area or in the music scene? Send it to us on the “News Source” page and we will verify it and credit you."}
+ ]
+};
+const ROLES=["Content creator","Lyrics writer / typist","News writer","Graphic designer / video editor","Promo & social media manager","Other"];
+/* ====================== */
+
+const $=s=>document.querySelector(s);
+const TABS=[["news","📰 News"],["alerts","🚨 Alerts"],["events","📅 Events"],["lyrics","🎶 Lyrics"],["promo","🚀 Promo"],["grow","📈 Grow your account"],["source","🗞️ News source"],["support","🛟 Support"],["join","🤝 Join us"],["about","ℹ️ About"],["privacy","🔒 Privacy & Terms"]];
+let tab="news",pw="",pick=0,DATA={news:[],alerts:[],lyrics:[]};
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const fd=d=>new Date(d).toLocaleDateString("en-ZA",{day:"numeric",month:"short",year:"numeric"});
+const wa=t=>`https://wa.me/${WA_NUM}?text=${encodeURIComponent(t||"Hi MzansiLyrics Hub")}`;
+async function api(p,b){const r=await fetch("/api/"+p,b?{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(b)}:{});return r.json()}
+$("#wa").href=wa();
+
+/* hero art */
+(function(){let seed=7;const r=()=>(seed=(seed*9301+49297)%233280)/233280;
+ let h="",x=0;while(x<1000){const w=16+r()*36,t=25+r()*95;h+=`<rect x="${x}" y="${200-t}" width="${w}" height="${t}"/>`;x+=w+2}
+ h+=`<rect x="690" y="20" width="5" height="180"/><ellipse cx="692" cy="55" rx="15" ry="9"/><rect x="684" y="70" width="16" height="10"/>`;
+ $("#sky").innerHTML=h;
+ $("#bars").innerHTML=Array.from({length:56},()=>`<i style="--d:${(.5+r()*.9).toFixed(2)}s;--l:-${(r()*2).toFixed(2)}s"></i>`).join("");
+})();
+
+function nav(){$("#nav").innerHTML=TABS.map(([k,l])=>`<button class="${tab===k?"on":""}" onclick="go('${k}')">${l}</button>`).join("")}
+function go(t){tab=t;nav();render();scrollTo({top:document.querySelector("nav").offsetTop-10,behavior:"smooth"})}
+$("#adm").onclick=e=>{e.preventDefault();tab="admin";nav();render()};
+
+let q="",cat="All",cur=PACKAGES;
+const card=(x,i,k)=>`<div class="card ${k==="alerts"?"alert":"acc"}" style="animation-delay:${Math.min(i,8)*.05}s"><span class="tag ${k==="alerts"?"r":k==="lyrics"?"y":""}">${k==="alerts"?"Alert":k==="lyrics"?"Lyrics":esc(x.cat||"News")}</span><h3>${esc(x.title)}</h3><div class="meta">${k==="lyrics"&&x.artist?"🎤 "+esc(x.artist)+" · ":""}${x.when?esc(x.when):x.date?fd(x.date):""}</div><div class="body ${k==="lyrics"?"lyr":""}">${esc(x.body)}</div>${x.url?`<div class="meta" style="margin-top:8px">Source: <a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.src||"Link")}</a></div>`:""}<a class="btn g sh" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent(x.title+" — MzansiLyrics Hub "+location.origin)}">↗ Share on WhatsApp</a></div>`;
+function newsList(){
+ const all=[...(DATA.news||[]),...SEED.news];
+ const L=all.filter(x=>(cat==="All"||(x.cat||"MzansiLyrics")===cat)&&(!q||(x.title+" "+x.body).toLowerCase().includes(q.toLowerCase())));
+ $("#nl").innerHTML=L.length?L.map((x,i)=>card(x,i,"news")).join(""):`<div class="empty"><b>🔍</b>No stories found.</div>`;
+}
+async function sub(){
+ const r=await api("ticket",{type:"subscribe",name:"",email:$("#sb-e").value,message:"Subscribe to news & alerts"});
+ $("#sb-s").innerHTML=r.ok?`<div class="res ok">✅ You're on the list!</div>`:`<div class="res bad">${esc(r.error||"Enter a valid email")}</div>`;
+}
+const subCard=()=>`<div class="card acc"><h3>📬 Never miss a story</h3><p class="meta">Get our news and alerts by email.</p><input id="sb-e" type="email" placeholder="Your email"><button class="btn" onclick="sub()">Subscribe</button><div id="sb-s"></div></div>`;
+function box(id,type,title,sub,ph,btn,pre){return `<div class="card acc"><h3>${title}</h3><p class="meta">${sub}</p><input id="${id}-n" placeholder="Your name"><input id="${id}-e" type="email" placeholder="Your email (we reply here)"><textarea id="${id}-m" rows="4" placeholder="${ph}"></textarea><button class="btn" onclick="sendBox('${id}','${type}','${pre||""}')">${btn}</button><div id="${id}-s"></div></div>`}
+async function sendBox(id,type,pre){
+ const r=await api("ticket",{type,name:$("#"+id+"-n").value,email:$("#"+id+"-e").value,message:(pre||"")+$("#"+id+"-m").value});
+ $("#"+id+"-s").innerHTML=r.ok?`<div class="res ok">✅ Thank you! We got it and will reply by email.</div>`:`<div class="res bad">${esc(r.error||"Something went wrong")}</div>`;
+}
+async function render(){
+ const m=$("#main");
+ if(["news","alerts","lyrics"].includes(tab)){
+  m.innerHTML=`<div class="empty">Loading…</div>`;
+  try{DATA=await api("content")}catch{}
+  if(tab==="news"){
+   const cats=["All",...new Set([...DATA.news,...SEED.news].map(x=>x.cat||"MzansiLyrics"))];
+   m.innerHTML=`<h2>Latest News</h2><p class="sub">Mzansi music &amp; culture, always with sources.</p><input id="sq" placeholder="🔍 Search news…" oninput="q=this.value;newsList()"><div class="fl">${cats.map(c=>`<button class="chip ${c===cat?"on":""}" onclick="cat='${c}';render()">${c}</button>`).join("")}</div><div id="nl"></div>`+subCard()+`<div class="card"><h3>Got a story?</h3><p class="meta">Become our news source and get credited.</p><button class="btn" onclick="go('source')">Send us a tip</button></div>`;
+   $("#sq").value=q;newsList();return;
+  }
+  const L=tab==="lyrics"?DATA.lyrics:[...DATA[tab],...SEED[tab]];
+  m.innerHTML=`<h2>${tab==="lyrics"?"Lyrics":"Alerts"}</h2><p class="sub">${tab==="lyrics"?"Sing along to your favourites.":"Important updates you shouldn't miss."}</p>`+
+  (L.length?L.map((x,i)=>card(x,i,tab)).join(""):`<div class="empty"><b>🎶</b>No lyrics posted yet. New ones coming soon.</div>`)+
+  (tab==="lyrics"?box("ly","lyrics","🎤 Request lyrics","Tell us the song and artist you want and we may post it.","Song name + artist…","Send request","Lyrics request: ")+`<div class="card acc"><h3>Want your own lyrics featured?</h3><p class="meta">We turn your song into a lyrics video.</p><button class="btn" onclick="go('promo')">See promo prices</button></div>`:"");
+ }else if(tab==="promo")promo(false);
+ else if(tab==="grow")promo(true);
+ else if(tab==="events")events();
+ else if(tab==="source")source();
+ else if(tab==="support")support();
+ else if(tab==="join")join();
+ else if(tab==="about")about();
+ else if(tab==="privacy")privacy();
+ else admin();
+}
+function events(){
+ $("#main").innerHTML=`<h2>Events</h2><p class="sub">Concerts, festivals and industry events. Please confirm details with the organiser before you go.</p>`+
+ EVENTS.map((e,i)=>`<div class="card acc" style="animation-delay:${i*.06}s"><span class="tag y">${esc(e.when)}</span><h3>${esc(e.title)}</h3><div class="meta">📍 ${esc(e.where)}</div><div class="body">${esc(e.note)}</div><div class="meta" style="margin-top:8px">Source: <a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.src)}</a></div></div>`).join("")+
+ box("ev","tip","📅 Add your event","Hosting a show, launch or festival? Tell us and we may feature it.","Event name, date, venue, ticket link…","Submit event","Event listing: ")+
+ `<div class="card"><p class="meta">Want guaranteed promo for your event? See our <a href="#" onclick="go('promo');return false">promo packages</a>.</p></div>`;
+}
+function source(){
+ const T=[["🎤","New music &amp; releases"],["📅","Events &amp; shows"],["🏘️","Community stories"],["✝️","Gospel &amp; faith"],["⚠️","Scams &amp; warnings"],["🏆","Awards &amp; milestones"]];
+ $("#main").innerHTML=`<h2>Become Our News Source 📰</h2><p class="sub">Be the eyes and ears of MzansiLyrics Hub. See something the community should know about? Send it to us.</p>
+ <div class="grid">${T.map(t=>`<div class="card mini"><div class="e">${t[0]}</div><b>${t[1]}</b></div>`).join("")}</div>
+ <div class="card acc"><h3>How it works</h3><ol class="steps"><li>Send your tip with proof or links (official posts, screenshots, press releases)</li><li>We verify it with at least one other source before posting</li><li>If we publish it, you get credit (if you want it) and a shoutout</li><li>Reliable sources can be invited to become <b>Community Reporters</b> on our team</li></ol></div>
+ <div class="card"><h3>Our rules</h3><ul class="ul"><li>Only send things that are true and that you can back up. No rumours or fake news.</li><li>No hate speech, defamation or private information about people.</li><li>Use your own photos and videos, or ones you have permission to share.</li><li>Paid promotion is not news. Use our <a href="#" onclick="go('promo');return false">Promo page</a> for that.</li><li>We may edit for length and clarity, and we can decline any tip.</li></ul></div>
+ <div class="card acc"><h3>📨 Submit a tip</h3><input id="t-n" placeholder="Your name"><input id="t-e" type="email" placeholder="Your email (we reply here)"><input id="t-h" placeholder="Your TikTok / Instagram handle (optional)"><select id="t-c"><option>New music / release</option><option>Event / show</option><option>Community story</option><option>Gospel / faith</option><option>Scam / warning</option><option>Award / milestone</option><option>Other</option></select><input id="t-t" placeholder="Headline (e.g. Artist X drops new single)"><textarea id="t-m" rows="5" placeholder="What happened? Who, what, when, where…"></textarea><input id="t-l" placeholder="Links / proof (optional)"><label class="chk"><input id="t-k" type="checkbox" checked> Credit me if you publish this</label><button class="btn" onclick="sendTip()">Send tip</button><div id="t-s"></div></div>`;
+}
+async function sendTip(){
+ const msg=`TIP · ${$("#t-c").value}\nHeadline: ${$("#t-t").value}\nHandle: ${$("#t-h").value}\nLinks: ${$("#t-l").value}\nCredit me: ${$("#t-k").checked?"yes":"no"}\n\n${$("#t-m").value}`;
+ const r=await api("ticket",{type:"tip",name:$("#t-n").value,email:$("#t-e").value,message:msg});
+ $("#t-s").innerHTML=r.ok?`<div class="res ok">✅ Thank you! Your tip is with our team. We'll email you if we need more info.</div>`:`<div class="res bad">${esc(r.error||"Enter your email and details")}</div>`;
+}
+/* PROMO */
+function bankCard(){return `<div class="card bank acc"><h3>🏦 Payment details</h3><div class="row"><span class="meta">Bank</span><b>${BANK.bank}</b></div><div class="row"><span class="meta">Account number</span><b>${BANK.acc}</b></div><div class="row"><span class="meta">Account holder</span><b>${esc(BANK.holder)}</b></div><div class="row"><span class="meta">Branch code</span><b>${esc(BANK.branch)}</b></div><div class="row"><span class="meta">Reference</span><b>Your private code</b></div><button class="btn g" onclick="navigator.clipboard.writeText('${BANK.acc}');this.textContent='Copied ✓'">Copy account number</button></div>`}
+function promo(a){
+ const L=a?ACCT:PACKAGES;
+ $("#main").innerHTML=`<h2>${a?"Promote Your Account":"Paid Promo"}</h2><p class="sub">${a?"Grow your TikTok, Instagram or YouTube account with real exposure to our Mzansi audience.":"Put your music, brand or message in front of our Mzansi audience."} (${STATS.followers} followers · ${STATS.likes} likes on TikTok)</p>
+ <div class="grid trust"><div class="card mini"><div class="e">🔐</div><b>Verified codes</b></div><div class="card mini"><div class="e">🏦</div><b>Secure bank EFT</b></div><div class="card mini"><div class="e">⚡</div><b>Live in 24–48h</b></div><div class="card mini"><div class="e">✝️</div><b>Gospel-friendly</b></div></div>`+
+ L.map((p,i)=>`<div class="card pk ${p.hot?"hot":"acc"}" style="animation-delay:${i*.07}s">${p.hot?'<div class="ribbon">POPULAR</div>':""}<div><h3>${p.icon} ${esc(p.name)}</h3><div class="meta">${esc(p.desc)}</div><ul>${p.inc.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div><div style="text-align:right;flex:none"><div class="amt">${esc(p.price)}</div><button class="btn" onclick="buy(${i},${a})">Buy now</button></div></div>`).join("")+
+ (a?`<div class="card"><h3>Good to know</h3><p class="meta">We promote your account to real people. We never sell bots or fake followers, and we can't guarantee a specific number of followers. Your account must follow TikTok, Instagram or YouTube rules and our content rules.</p></div>`:"")+
+ bankCard()+
+ `<div class="card acc"><h3>How it works</h3><ol class="steps"><li>Choose a package and get your <b>private code</b></li><li>Pay by EFT to the Nedbank account above, using your code as the reference</li><li>Send the code (and proof of payment) to <b>${EMAIL}</b>, WhatsApp <b>${WA_SHOW}</b> or TikTok DM</li><li>We verify it and your promo goes live 🚀</li></ol><p class="meta">Questions? WhatsApp <a href="${wa()}" target="_blank" rel="noopener">${WA_SHOW}</a>. Please read our <a href="#" onclick="go('privacy');return false">Terms &amp; Refund policy</a>.</p></div>
+ <div class="card"><h3>${a?"Promoting a song or brand instead?":"Want to grow your own account?"}</h3><button class="btn g" onclick="go('${a?"promo":"grow"}')">${a?"See music & brand promo":"See account promo packages"}</button></div>`;
+}
+function buy(i,a){cur=a?ACCT:PACKAGES;pick=i;$("#mpk").textContent=cur[i].name+" — "+cur[i].price;$("#mn").value="";$("#mod").classList.add("on");$("#mn").focus()}
+async function confirmBuy(){
+ const name=$("#mn").value.trim();if(!name){$("#mn").focus();return}
+ const p=cur[pick];$("#mod").classList.remove("on");
+ const r=await api("order",{pkg:p.name,price:p.price,name});
+ $("#main").innerHTML=`<div class="card acc"><span class="tag y">Order created</span><h3>${p.icon} ${esc(p.name)} — ${esc(p.price)}</h3>
+ <p>This is your <b>private code</b>. Keep it safe and don't share it publicly:</p><div class="code">${esc(r.code)}</div>
+ <button class="btn" onclick="navigator.clipboard.writeText('${esc(r.code)}');this.textContent='Copied ✓'">Copy code</button>
+ <ol class="steps"><li>Pay <b>${esc(p.price)}</b> to <b>${BANK.bank} ${BANK.acc}</b> (${esc(BANK.holder)}), reference: <b>${esc(r.code)}</b></li><li>Send this code + proof of payment to <b>${EMAIL}</b>, WhatsApp, or privately on TikTok (<b>${TIKTOK}</b>)</li><li>Once verified, your promo goes live.</li></ol>
+ <a class="btn w" target="_blank" rel="noopener" href="${wa("Hi MzansiLyrics Hub, my private code is "+r.code+" ("+p.name+" "+p.price+")")}">Send code on WhatsApp</a>
+ <a class="btn g" href="mailto:${EMAIL}?subject=${encodeURIComponent("Promo code "+r.code)}&body=${encodeURIComponent("My private code: "+r.code+"\nPackage: "+p.name+" "+p.price+"\nName: "+name)}">Send by email</a>
+ <button class="btn g" onclick="go('promo')">← Back</button></div>`;
+}
+
+/* SUPPORT / JOIN */
+function form(join){return `<div class="card acc"><input id="f-n" placeholder="Your name"><input id="f-e" type="email" placeholder="Enter your email — this is where we'll answer you">${join?`<select id="f-r">${ROLES.map(r=>`<option>${r}</option>`).join("")}</select>`:`<select id="f-t"><option value="support">🛟 I need support</option><option value="report">🚩 Report a problem / scam / content</option><option value="inquiry">💬 General inquiry</option></select>`}<textarea id="f-m" rows="5" placeholder="${join?"Tell us about yourself, your skills and your TikTok handle…":"How can we help? Include links or your promo code if relevant."}"></textarea><button class="btn" onclick="send(${join})">Send message</button><div id="f-s"></div></div>`}
+async function send(join){
+ const r=await api("ticket",{type:join?"join":$("#f-t").value,name:$("#f-n").value,email:$("#f-e").value,role:join?$("#f-r").value:"",message:$("#f-m").value});
+ $("#f-s").innerHTML=r.ok?`<div class="res ok">✅ Sent! We'll reply to your email as soon as we can.</div>`:`<div class="res bad">${esc(r.error||"Something went wrong")}</div>`;
+ if(r.ok){$("#f-m").value=""}
+}
+function support(){
+ $("#main").innerHTML=`<h2>Support &amp; Reports</h2><p class="sub">Need help, want to report something, or have an inquiry? Send it here — it goes straight to our admin team and we answer by email.</p>`+form(false)+
+ `<div class="grid"><a class="card mini" href="mailto:${EMAIL}" style="text-decoration:none;color:inherit"><div class="e">📧</div><b>Email</b><div class="meta">${EMAIL}</div></a><a class="card mini" href="${wa()}" target="_blank" rel="noopener" style="text-decoration:none;color:inherit"><div class="e">💬</div><b>WhatsApp / inquiries</b><div class="meta">${WA_SHOW}</div></a><a class="card mini" href="${TIKTOK_URL}" target="_blank" rel="noopener" style="text-decoration:none;color:inherit"><div class="e">🎬</div><b>TikTok DM</b><div class="meta">${TIKTOK}</div></a></div>`;
+}
+function join(){
+ $("#main").innerHTML=`<h2>Want to join the team? 🤝</h2><p class="sub">We're growing and looking for passionate people who love Mzansi music and the gospel message.</p>
+ <div class="card acc"><h3>Roles we need</h3><ul>${ROLES.slice(0,5).map(r=>`<li>${r}</li>`).join("")}</ul><p class="meta">Opportunities may start as volunteer positions and grow as the page grows. Under 18? A parent or guardian must agree.</p></div>`+form(true);
+}
+
+/* ABOUT */
+function about(){
+ $("#main").innerHTML=`<div class="card acc"><div class="prof"><img src="profile.jpg" alt="profile"><div><h2 style="margin:0">MzansiLyrics_Hub</h2><div class="meta">${TIKTOK}</div><div class="verse" style="font-family:'Playfair Display',serif;font-style:italic;margin:6px 0">"I am not ashamed of the gospel" – Romans 1:16</div><div class="stats"><div><b>${STATS.followers}</b><span class="meta">Followers</span></div><div><b>${STATS.likes}</b><span class="meta">Likes</span></div><div><b>${STATS.following}</b><span class="meta">Following</span></div></div><a class="btn" href="${TIKTOK_URL}" target="_blank" rel="noopener">Follow on TikTok</a></div></div></div>
+ <div class="card"><h3>About us</h3><p>MzansiLyrics Hub is a South African music page that brings you lyrics videos, music news and alerts, and helps artists get heard through affordable promo. We love amapiano, gospel and all the sounds of Mzansi, and we're not ashamed of our faith.</p></div>
+ <div class="grid"><div class="card mini"><div class="e">📰</div><b>Real news</b><div class="meta">Stories with sources, no fake news.</div></div><div class="card mini"><div class="e">🎶</div><b>Lyrics</b><div class="meta">Sing along to your favourites.</div></div><div class="card mini"><div class="e">🚀</div><b>Promo</b><div class="meta">Affordable promo for artists &amp; brands.</div></div></div>
+ <div class="card"><h3>FAQ</h3>
+ <details open><summary>How does promo work?</summary><p>Pick a package, get a private code, pay by EFT, send us the code + proof, and we verify it before your promo goes live (usually within 24–48 hours).</p></details>
+ <details><summary>How do I know a code is real?</summary><p>Only codes created on this website are valid. We check every code in our admin panel; unknown or already-used codes are rejected.</p></details>
+ <details><summary>What can I promote?</summary><p>Music, lyrics, events and brands that are legal and respectful. We may decline content that is hateful, adult, misleading or mocks the gospel.</p></details>
+ <details><summary>Can you guarantee views or sales?</summary><p>No. We give your content exposure to our audience but can't guarantee results.</p></details>
+ <details><summary>How do I contact you?</summary><p>Email ${EMAIL}, WhatsApp ${WA_SHOW}, TikTok DM, or use the <a href="#" onclick="go('support');return false">Support</a> form.</p></details></div>`;
+}
+
+/* PRIVACY & TERMS */
+function privacy(){
+ $("#main").innerHTML=`<h2>Privacy &amp; Terms</h2><p class="sub">Last updated: 13 October 2026. We respect your privacy and follow South Africa's POPIA principles.</p><div class="card">
+ <details open><summary>1. Who we are</summary><p>MzansiLyrics Hub (TikTok ${TIKTOK}) is the responsible party for information collected on this website. Contact: ${EMAIL} · WhatsApp ${WA_SHOW}.</p></details>
+ <details><summary>2. What we collect</summary><ul><li>Name and email you type into our forms</li><li>Messages you send (support, reports, inquiries, team applications, news tips, lyrics requests, email sign-ups)</li><li>Promo orders: package, price, private code, name, date and whether the code was used</li><li>Basic technical data (like IP address) that our hosting provider may log</li></ul><p>We do <b>not</b> collect card numbers, PINs or passwords. Payments are normal bank transfers handled by your bank.</p></details>
+ <details><summary>3. Why we use it</summary><ul><li>To process promo orders and verify codes</li><li>To answer your messages by email</li><li>To review team applications</li><li>To keep the site safe and stop fraud</li></ul></details>
+ <details><summary>4. Sharing</summary><p>We never sell your information. It is stored with our hosting provider (Netlify) and only our admin can view it. If you contact us on TikTok, WhatsApp or Gmail, those platforms' own privacy policies also apply. We may share information if the law requires it.</p></details>
+ <details><summary>5. Storage &amp; security</summary><p>Admin access is password-protected and codes are random and single-use. No system is 100% secure, so please don't send sensitive personal information through our forms.</p></details>
+ <details><summary>6. How long we keep it</summary><p>Only as long as needed for orders, support, accounting and fraud prevention. You can ask us to delete your information at any time.</p></details>
+ <details><summary>7. Your rights (POPIA)</summary><p>You may ask to see, correct or delete your personal information, or object to how we use it — email ${EMAIL}. You may also complain to the Information Regulator of South Africa (inforegulator.org.za).</p></details>
+ <details><summary>8. Cookies &amp; tracking</summary><p>We don't use advertising or tracking cookies.</p></details>
+ <details><summary>9. Children</summary><p>If you are under 18, get a parent or guardian's permission before buying promo or applying to join the team.</p></details>
+ <details><summary>10. Promo terms</summary><ul><li>Promos go live after your payment is received and your code is verified, on a date we agree with you.</li><li>Each code works once. Don't share it publicly.</li><li>Pay only to the official Nedbank account shown on this site. We never ask for PINs, OTPs or passwords.</li><li>We may decline or remove content that is illegal, hateful, adult, misleading or mocks the gospel.</li><li>You confirm you own or have permission to use what you send us.</li><li>We can't guarantee views, streams or sales.</li></ul></details>
+ <details><summary>11. Refunds</summary><p>If we are unable to deliver your promo, you get a full refund. Once your promo has been posted, it can't be refunded. Contact us within 7 days if something went wrong.</p></details>
+ <details><summary>12. Disclaimer &amp; changes</summary><p>News items are summaries with links to the original sources; credit goes to those publishers. Lyrics belong to their owners. We may update these terms and will change the date above when we do.</p></details><details><summary>13. News tips &amp; contributors</summary><ul><li>Tips you send are reviewed by our team and may be published with or without your name, depending on what you choose.</li><li>You confirm that what you send is true to the best of your knowledge and that you have permission to share any photos or videos.</li><li>By sending content you give us permission to edit and publish it on our page and website.</li><li>Sending a tip does not make you an employee. Reporter roles are agreed separately.</li></ul></details></div>`;
+}
+
+/* ADMIN */
+function admin(){
+ if(!pw){
+  $("#main").innerHTML=`<div class="card" style="max-width:420px;margin:0 auto"><span class="tag">Admin</span><h3>🔐 Owner login</h3><input id="p" type="password" placeholder="Password" onkeydown="if(event.key==='Enter')login()"><button class="btn" onclick="login()">Login</button><div id="e" class="bad"></div></div>`;return;
+ }
+ $("#main").innerHTML=`<h2>Admin Panel</h2><p class="sub">Verify codes, answer messages and manage content.</p>
+ <div class="card acc"><h3>✅ Verify code</h3><input id="c" placeholder="MZL-XXXXX-XXXXX" onkeydown="if(event.key==='Enter')chk()"><button class="btn" onclick="chk()">Verify</button><div id="res"></div></div>
+ <div class="card acc"><h3>📥 Inbox <span id="ibn" class="meta"></span></h3><div id="ib">Loading…</div></div>
+ <div class="card acc"><h3>✍️ Post content</h3><select id="t"><option value="news">📰 News</option><option value="alerts">🚨 Alert</option><option value="lyrics">🎶 Lyrics</option></select>
+ <input id="ti" placeholder="Title"><input id="ca" placeholder="Category (news: e.g. Amapiano &amp; House, Hip-Hop, Events)"><input id="ar" placeholder="Artist (lyrics only)"><input id="sr" placeholder="Source name (optional)"><input id="ur" placeholder="Source link https://… (optional)"><textarea id="bo" rows="6" placeholder="Body / lyrics"></textarea>
+ <button class="btn" onclick="post()">Publish</button><span id="pm" class="ok"></span></div>
+ <div class="card"><h3>🗂️ Manage posts</h3><div id="mg"></div></div>
+ <div class="card"><h3>🔑 All codes</h3><div id="ls">Loading…</div></div>
+ <button class="btn r" onclick="pw='';admin()">Logout</button>`;
+ manage();codes();inbox();
+}
+async function login(){const v=$("#p").value;const r=await api("login",{password:v});if(r.ok){pw=v;admin()}else $("#e").textContent="Wrong password"}
+async function chk(){
+ const r=await api("check",{password:pw,code:$("#c").value});const o=$("#res");
+ if(r.result==="invalid")o.innerHTML=`<div class="res bad">❌ INVALID — this code did not come from us.</div>`;
+ else if(r.result==="used")o.innerHTML=`<div class="res warn">⚠️ CODE ALREADY USED (${fd(r.rec.usedAt)})</div>`;
+ else o.innerHTML=`<div class="res ok">✅ VALID — ${esc(r.rec.name)} · ${esc(r.rec.pkg)} (${esc(r.rec.price)})</div><button class="btn" onclick="use('${esc(r.rec.code)}')">Mark as USED</button>`;
+}
+async function use(c){const r=await api("use",{password:pw,code:c});$("#res").innerHTML=r.result==="marked"?`<div class="res ok">Marked as used ✓</div>`:`<div class="res warn">Already used</div>`;codes()}
+async function inbox(){
+ const r=await api("tickets",{password:pw});const L=r.tickets||[];const n=L.filter(t=>t.status==="new").length;
+ $("#ibn").textContent=n?`(${n} new)`:"";
+ $("#ib").innerHTML=L.length?L.map(t=>`<div class="tk ${t.status}"><span class="tag ${t.type==="report"?"r":t.type==="join"?"":"y"}">${t.type}</span> <b>${esc(t.name||"No name")}</b> <span class="meta">${fd(t.created)}${t.role?" · "+esc(t.role):""} · ${t.status}</span><div class="body">${esc(t.message)}</div><a class="btn" href="mailto:${esc(t.email)}?subject=${encodeURIComponent("Re: MzansiLyrics "+t.type)}">Reply to ${esc(t.email)}</a><button class="btn g" onclick="tk('ticketdone','${t.id}')">${t.status==="answered"?"Reopen":"Mark answered"}</button><button class="btn r" onclick="if(confirm('Delete?'))tk('ticketdel','${t.id}')">Delete</button></div>`).join(""):`<span class="meta">No messages yet</span>`;
+}
+async function tk(a,id){await api(a,{password:pw,id});inbox()}
+async function post(){
+ const r=await api("post",{password:pw,type:$("#t").value,title:$("#ti").value,cat:$("#ca").value,artist:$("#ar").value,src:$("#sr").value,url:$("#ur").value,body:$("#bo").value});
+ if(r.ok){$("#pm").textContent=" Published ✓";$("#ti").value=$("#ca").value=$("#ar").value=$("#sr").value=$("#ur").value=$("#bo").value="";manage()}
+}
+async function manage(){
+ DATA=await api("content");
+ $("#mg").innerHTML=TABS.slice(0,3).flatMap(([k,l])=>DATA[k].map(x=>`<div class="row2"><span><span class="meta">${l}</span> ${esc(x.title)}</span><button class="btn r" onclick="del('${k}','${x.id}')">Delete</button></div>`)).join("")||`<span class="meta">No posts yet</span>`;
+}
+async function del(t,id){if(confirm("Delete this post?")){await api("delete",{password:pw,type:t,id});manage()}}
+async function codes(){
+ const r=await api("list",{password:pw});
+ $("#ls").innerHTML=r.codes?.length?`<div style="overflow-x:auto"><table><tr><th>Code</th><th>Name</th><th>Package</th><th>Status</th></tr>${r.codes.map(x=>`<tr><td>${esc(x.code)}</td><td>${esc(x.name)}</td><td>${esc(x.pkg)}</td><td class="${x.status==="used"?"warn":"ok"}">${x.status}</td></tr>`).join("")}</table></div>`:`<span class="meta">No codes yet</span>`;
+}
+nav();render();
+(function(){const t=[...SEED.alerts.map(x=>"🚨 "+x.title),...SEED.news.slice(0,5).map(x=>"📰 "+x.title)].join("      •      ");$("#tkr").textContent=t})();
+</script>
+</body>
+</html>
